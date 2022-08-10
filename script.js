@@ -58,7 +58,6 @@ document.querySelector('form').onsubmit = () => {
             const page = parser.parseFromString(rawPage, 'text/html');
 
             const infobox = page.querySelector('.portable-infobox').innerHTML;
-            console.log(infobox);
             document.getElementById('result').innerHTML = infobox;
         })
 
