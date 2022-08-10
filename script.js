@@ -39,3 +39,32 @@ fetch(memberQuery)
     .catch(err => {
         console.log('Error: ', err);
     });
+
+document.querySelector('form').onsubmit = () => {
+    const select = document.getElementById('members');
+    const memberValue = select.value;
+    console.log(memberValue);
+
+    const pageQuery = createQuery({
+        action: 'parse',
+        page: memberValue,
+    })
+
+    fetch(pageQuery)
+        .then(response => response.json())
+        .then(data => {
+            const rawPage = data.parse.text['*'];
+            const parser = new DOMParser();
+            const page = parser.parseFromString(rawPage, 'text/html');
+
+            const infobox = page.querySelector('.portable-infobox').innerHTML;
+            console.log(infobox);
+            document.getElementById('result').innerHTML = infobox;
+        })
+
+        .catch(err => {
+            console.log('Error: ', err);
+        })
+
+    return false;
+}
