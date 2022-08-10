@@ -43,7 +43,6 @@ fetch(memberQuery)
 document.querySelector('form').onsubmit = () => {
     const select = document.getElementById('members');
     const memberValue = select.value;
-    console.log(memberValue);
 
     const pageQuery = createQuery({
         action: 'parse',
