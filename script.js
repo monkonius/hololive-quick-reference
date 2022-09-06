@@ -69,7 +69,6 @@ document.querySelector('form').onsubmit = () => {
                 }
             }
 
-            console.log(infoboxElems);
             document.getElementById('result').innerHTML = infobox.innerHTML;
         })
 
