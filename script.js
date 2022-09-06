@@ -42,7 +42,8 @@ fetch(memberQuery)
 
 document.querySelector('form').onsubmit = () => {
     const select = document.getElementById('members');
-    const memberValue = select.value;
+    let memberValue = select.value;
+    memberValue = memberValue.replace(/\+ /, '%2B_');   // Special case for La+ Darkness
 
     const pageQuery = createQuery({
         action: 'parse',
