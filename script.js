@@ -52,12 +52,23 @@ document.querySelector('form').onsubmit = () => {
     fetch(pageQuery)
         .then(response => response.json())
         .then(data => {
-            const rawPage = data.parse.text['*'];
             const parser = new DOMParser();
-            const page = parser.parseFromString(rawPage, 'text/html');
+            const page = parser.parseFromString(data.parse.text['*'], 'text/html');
 
-            const infobox = page.querySelector('.portable-infobox').innerHTML;
-            document.getElementById('result').innerHTML = infobox;
+            const infoboxElems = page.querySelectorAll('.portable-infobox *');
+            const infobox = page.querySelector('.portable-infobox');
+
+            for (let elem of infoboxElems) {
+                if (elem.tagName === 'FIGURE') {
+                    elem.remove();
+                }
+                while (elem.attributes.length > 0) {
+                    elem.removeAttribute(elem.attributes[0].name);
+                }
+            }
+
+            console.log(infoboxElems);
+            document.getElementById('result').innerHTML = infobox.innerHTML;
         })
 
         .catch(err => {
