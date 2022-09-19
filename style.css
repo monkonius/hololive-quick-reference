@@ -1,0 +1,26 @@
+body {
+    font-family: Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: blue;
+}
+
+@media only screen and (min-width: 600px) {
+    #result {
+        display: flex;
+        gap: 20px;
+    }
+}
