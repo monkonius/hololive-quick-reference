@@ -18,6 +18,21 @@ a:visited {
     color: blue;
 }
 
+select {
+    border: none;
+    box-sizing: border-box;
+    padding: 16px 20px;
+    font-size: 14px;
+}
+
+input {
+    border: none;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 600px) {
     #result {
         display: flex;
