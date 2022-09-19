@@ -60,7 +60,9 @@ document.querySelector('form').onsubmit = () => {
             const infobox = page.querySelector('.portable-infobox');
 
             for (let elem of infoboxElems) {
-                if (elem.tagName === 'FIGURE' || elem.tagName === 'SUP') {
+                if (elem.tagName === 'FIGURE' || elem.tagName === 'SUP' || elem.tagName === 'UL') {
+                    elem.remove();
+                } else if (elem.tagName === 'H2' && elem.dataset.source === "title1") {
                     elem.remove();
                 } else if (elem.tagName === 'A' && elem.title !== 'Hololive') {
                     continue;
