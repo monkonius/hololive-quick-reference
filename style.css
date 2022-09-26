@@ -38,4 +38,9 @@ input {
         display: flex;
         gap: 20px;
     }
+
+    section {
+        box-sizing: border-box;
+        width: 285px;
+    }
 }
