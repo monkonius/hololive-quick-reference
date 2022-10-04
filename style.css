@@ -36,7 +36,6 @@ input {
 @media only screen and (min-width: 600px) {
     #result {
         display: flex;
-        gap: 20px;
     }
 
     section {
