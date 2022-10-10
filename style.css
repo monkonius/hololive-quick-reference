@@ -35,6 +35,9 @@ select {
     border: none;
     border-radius: 8px 0 0 8px;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 52px;
     padding: 16px 20px;
     font-size: 14px;
     font-weight: bold;
@@ -45,6 +48,10 @@ select {
 input {
     border: none;
     border-radius: 0 8px 8px 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 52px;
     padding: 16px 20px;
     font-size: 14px;
     font-weight: bold;
