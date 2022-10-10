@@ -5,7 +5,7 @@ body {
     align-items: center;
     text-align: center;
     background-color: #363D4D;
-    color: #363D4D;
+    color: #2B303D;
     margin: 0;
     padding: 0;
 }
@@ -19,7 +19,7 @@ header {
 }
 
 a {
-    color: #4EA0F0;
+    color: #4690D8;
     text-decoration: none;
 }
 
@@ -28,7 +28,7 @@ a:hover {
 }
 
 a:visited {
-    color: #4EA0F0;
+    color: #4690D8;
 }
 
 select {
@@ -57,7 +57,7 @@ input {
     background-color: #F0F8FF;
     border-radius: 8px;
     padding: 2em;
-    margin: 1em;
+    margin: 2em;
     font-weight: 500;
 }
 
