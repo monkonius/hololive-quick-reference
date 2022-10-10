@@ -5,6 +5,7 @@ body {
     align-items: center;
     text-align: center;
     background-color: #363D4D;
+    color: #363D4D;
     margin: 0;
     padding: 0;
 }
@@ -18,6 +19,7 @@ header {
 }
 
 a {
+    color: #4EA0F0;
     text-decoration: none;
 }
 
@@ -26,7 +28,7 @@ a:hover {
 }
 
 a:visited {
-    color: blue;
+    color: #4EA0F0;
 }
 
 select {
@@ -34,6 +36,9 @@ select {
     box-sizing: border-box;
     padding: 16px 20px;
     font-size: 14px;
+    font-weight: bold;
+    background-color: #4A505E;
+    color: #F0F8FF;
 }
 
 input {
@@ -42,6 +47,8 @@ input {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+    background-color: #4A505E;
+    color: #F0F8FF;
 }
 
 .content {
