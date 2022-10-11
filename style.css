@@ -18,6 +18,14 @@ header {
     width: 100%;
 }
 
+img {
+    height: 2em;
+}
+
+h2 {
+    margin: 0.5em;
+}
+
 a {
     color: #4690D8;
     text-decoration: none;
