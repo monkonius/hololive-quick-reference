@@ -55,6 +55,10 @@ select {
     color: #F0F8FF;
 }
 
+select:hover {
+    background-color: #363D4D;
+}
+
 input {
     border: none;
     border-radius: 8px;
@@ -64,6 +68,10 @@ input {
     cursor: pointer;
     background-color: #4A505E;
     color: #F0F8FF;
+}
+
+input:active {
+    background-color: #363D4D;
 }
 
 section {
