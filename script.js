@@ -64,7 +64,11 @@ document.querySelector('form').onsubmit = () => {
                     elem.remove();
                 } else if (elem.tagName === 'H2' && elem.dataset.source === "title1") {
                     elem.remove();
-                } else if (elem.tagName === 'A' && elem.title !== 'Hololive') {
+                } else if (elem.tagName === 'A' && elem.title) {
+                    const span = document.createElement('span');
+                    span.innerHTML = elem.innerHTML;
+                    elem.replaceWith(span);
+                } else if (elem.tagName === 'A') {
                     continue;
                 }
                 while (elem.attributes.length > 0) {
