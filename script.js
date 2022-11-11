@@ -59,10 +59,10 @@ document.querySelector('form').onsubmit = () => {
             const infoboxElems = page.querySelectorAll('.portable-infobox *');
             const infobox = page.querySelector('.portable-infobox');
 
+            const REMOVE = ['FIGURE', 'SUP', 'UL'];
+
             for (let elem of infoboxElems) {
-                if (elem.tagName === 'FIGURE' || elem.tagName === 'SUP' || elem.tagName === 'UL') {
-                    elem.remove();
-                } else if (elem.tagName === 'H2' && elem.dataset.source === "title1") {
+                if (REMOVE.includes(elem.tagName) || elem.dataset.source === 'title1') {
                     elem.remove();
                 } else if (elem.tagName === 'A' && elem.title) {
                     const span = document.createElement('span');
@@ -71,6 +71,7 @@ document.querySelector('form').onsubmit = () => {
                 } else if (elem.tagName === 'A') {
                     continue;
                 }
+                
                 while (elem.attributes.length > 0) {
                     elem.removeAttribute(elem.attributes[0].name);
                 }
