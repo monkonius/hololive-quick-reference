@@ -70,12 +70,12 @@ fetch(memberQuery)
             })
             
             .catch(err => {
-                console.log('Error: ', err);
+                console.error('Error: ', err);
             })
     })
 
     .catch(err => {
-        console.log('Error: ', err);
+        console.error('Error: ', err);
     });
 
 document.querySelector('form').onsubmit = () => {
@@ -119,7 +119,7 @@ document.querySelector('form').onsubmit = () => {
         })
 
         .catch(err => {
-            console.log('Error: ', err);
+            console.error('Error: ', err);
         });
 
     return false;
