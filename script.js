@@ -24,9 +24,11 @@ const memberQuery = createQuery({
 fetch(memberQuery)
     .then(response => response.json())
     .then(data => {
-        const members = data.query.categorymembers.filter(member => {
-            return !NONMEMBERS.includes(member.title);
-        });
+        const members = data.query.categorymembers
+            .map(member => member.title)
+            .filter(member => !NONMEMBERS.includes(member.title));
+
+        console.log(members);
 
         const retiredQuery = createQuery({
             action: 'query',
@@ -34,24 +36,20 @@ fetch(memberQuery)
             cmtitle: 'Category:Retired',
             cmtype: 'page',
             cmlimit: '500'
-        })
+        });
 
         fetch(retiredQuery)
             .then(response => response.json())
             .then(data => {
-                const retired = data.query.categorymembers.filter(retiree => {
-                    return members.map(member => {
-                        return member.title;
-                    }).includes(retiree.title);
-                });
-
+                const retired = data.query.categorymembers
+                    .filter(retiree => members.includes(retiree.title));
                 console.log(retired);
             });
-
+                
         for (let member of members) {
             const option = document.createElement('option');
-            option.innerHTML = member.title;
-            option.setAttribute('value', member.title);
+            option.innerHTML = member;
+            option.setAttribute('value', member);
             document.getElementById('members').append(option);
         }
     })
@@ -102,7 +100,7 @@ document.querySelector('form').onsubmit = () => {
 
         .catch(err => {
             console.log('Error: ', err);
-        })
+        });
 
     return false;
 }
