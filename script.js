@@ -42,16 +42,36 @@ fetch(memberQuery)
             .then(response => response.json())
             .then(data => {
                 const retired = data.query.categorymembers
-                    .filter(retiree => members.includes(retiree.title));
+                    .filter(retiree => members.includes(retiree.title))
+                    .map(retiree => retiree.title);
                 console.log(retired);
+
+                const active = members.filter(member => !retired.includes(member));
+                console.log(active);
+
+                const select = document.getElementById('members');
+                const activeGroup = document.createElement('optgroup');
+                activeGroup.label = 'Active';
+                select.append(activeGroup);
+
+                for (const member of active) {
+                    const option = document.createElement('option');
+                    option.innerHTML = member;
+                    option.setAttribute('value', member);
+                    activeGroup.append(option);
+                }
+
+                const retiredGroup = document.createElement('optgroup');
+                retiredGroup.label = 'Retired';
+                select.append(retiredGroup);
+
+                for (const member of retired) {
+                    const option = document.createElement('option');
+                    option.innerHTML = member;
+                    option.setAttribute('value', member);
+                    retiredGroup.append(option);
+                }
             });
-                
-        for (let member of members) {
-            const option = document.createElement('option');
-            option.innerHTML = member;
-            option.setAttribute('value', member);
-            document.getElementById('members').append(option);
-        }
     })
 
     .catch(err => {
