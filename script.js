@@ -67,7 +67,11 @@ fetch(memberQuery)
                     option.setAttribute('value', member);
                     retiredGroup.append(option);
                 }
-            });
+            })
+            
+            .catch(err => {
+                console.log('Error: ', err);
+            })
     })
 
     .catch(err => {
