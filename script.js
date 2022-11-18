@@ -28,6 +28,26 @@ fetch(memberQuery)
             return !NONMEMBERS.includes(member.title);
         });
 
+        const retiredQuery = createQuery({
+            action: 'query',
+            list: 'categorymembers',
+            cmtitle: 'Category:Retired',
+            cmtype: 'page',
+            cmlimit: '500'
+        })
+
+        fetch(retiredQuery)
+            .then(response => response.json())
+            .then(data => {
+                const retired = data.query.categorymembers.filter(retiree => {
+                    return members.map(member => {
+                        return member.title;
+                    }).includes(retiree.title);
+                });
+
+                console.log(retired);
+            });
+
         for (let member of members) {
             const option = document.createElement('option');
             option.innerHTML = member.title;
