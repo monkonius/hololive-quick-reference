@@ -28,8 +28,6 @@ fetch(memberQuery)
             .map(member => member.title)
             .filter(member => !NONMEMBERS.includes(member.title));
 
-        console.log(members);
-
         const retiredQuery = createQuery({
             action: 'query',
             list: 'categorymembers',
@@ -44,10 +42,8 @@ fetch(memberQuery)
                 const retired = data.query.categorymembers
                     .filter(retiree => members.includes(retiree.title))
                     .map(retiree => retiree.title);
-                console.log(retired);
 
                 const active = members.filter(member => !retired.includes(member));
-                console.log(active);
 
                 const select = document.getElementById('members');
                 const activeGroup = document.createElement('optgroup');
