@@ -25,8 +25,8 @@ fetch(memberQuery)
     .then(response => response.json())
     .then(data => {
         const members = data.query.categorymembers
-            .map(member => member.title)
-            .filter(member => !NONMEMBERS.includes(member.title));
+            .filter(member => !NONMEMBERS.includes(member.title))
+            .map(member => member.title);
 
         const retiredQuery = createQuery({
             action: 'query',
