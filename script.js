@@ -1,7 +1,5 @@
 const BASE_URL = 'https://virtualyoutuber.fandom.com/api.php';
 
-const NONMEMBERS = ['Hololive', 'Language of Hololive Talents'];
-
 function createQuery(params) {
     let query = BASE_URL;
     query += '?origin=*';
@@ -24,6 +22,7 @@ const memberQuery = createQuery({
 fetch(memberQuery)
     .then(response => response.json())
     .then(data => {
+        const NONMEMBERS = ['Hololive', 'Language of Hololive Talents'];
         const members = data.query.categorymembers
             .filter(member => !NONMEMBERS.includes(member.title))
             .map(member => member.title);
