@@ -1,10 +1,10 @@
 const BASE_URL = 'https://virtualyoutuber.fandom.com/api.php';
 
-function createQuery(params) {
+function createQuery(parameters) {
     let query = BASE_URL;
     query += '?origin=*';
-    Object.keys(params).forEach(key => {
-        query += '&' + key + '=' + params[key];
+    Object.keys(parameters).forEach(key => {
+        query += '&' + key + '=' + parameters[key];
     });
     query += '&format=json';
 
@@ -68,13 +68,13 @@ fetch(memberQuery)
                 }
             })
             
-            .catch(err => {
-                console.error('Error: ', err);
+            .catch(error => {
+                console.error('Error: ', error);
             })
     })
 
-    .catch(err => {
-        console.error('Error: ', err);
+    .catch(error => {
+        console.error('Error: ', error);
     });
 
 document.querySelector('form').onsubmit = () => {
@@ -93,32 +93,32 @@ document.querySelector('form').onsubmit = () => {
             const parser = new DOMParser();
             const page = parser.parseFromString(data.parse.text['*'], 'text/html');
 
-            const infoboxElems = page.querySelectorAll('.portable-infobox *');
+            const infoboxElements = page.querySelectorAll('.portable-infobox *');
             const infobox = page.querySelector('.portable-infobox');
 
             const REMOVE = ['FIGURE', 'SUP', 'UL'];
 
-            for (let elem of infoboxElems) {
-                if (REMOVE.includes(elem.tagName) || elem.dataset.source === 'title1') {
-                    elem.remove();
-                } else if (elem.tagName === 'A' && elem.title) {
+            for (let element of infoboxElements) {
+                if (REMOVE.includes(element.tagName) || element.dataset.source === 'title1') {
+                    element.remove();
+                } else if (element.tagName === 'A' && element.title) {
                     const span = document.createElement('span');
-                    span.innerHTML = elem.innerHTML;
-                    elem.replaceWith(span);
-                } else if (elem.tagName === 'A') {
+                    span.innerHTML = element.innerHTML;
+                    element.replaceWith(span);
+                } else if (element.tagName === 'A') {
                     continue;
                 }
                 
-                while (elem.attributes.length > 0) {
-                    elem.removeAttribute(elem.attributes[0].name);
+                while (element.attributes.length > 0) {
+                    element.removeAttribute(element.attributes[0].name);
                 }
             }
 
             document.getElementById('result').innerHTML = infobox.innerHTML;
         })
 
-        .catch(err => {
-            console.error('Error: ', err);
+        .catch(error => {
+            console.error('Error: ', error);
         });
 
     return false;
