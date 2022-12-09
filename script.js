@@ -101,6 +101,7 @@ document.querySelector('form').onsubmit = () => {
             for (let element of infoboxElements) {
                 if (REMOVE.includes(element.tagName) || element.dataset.source === 'title1') {
                     element.remove();
+                // Replace hyperlinks with relative paths from source
                 } else if (element.tagName === 'A' && element.title) {
                     const span = document.createElement('span');
                     span.innerHTML = element.innerHTML;
@@ -109,6 +110,7 @@ document.querySelector('form').onsubmit = () => {
                     continue;
                 }
                 
+                // Unneeded attributes from source
                 while (element.attributes.length > 0) {
                     element.removeAttribute(element.attributes[0].name);
                 }
