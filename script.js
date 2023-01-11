@@ -19,7 +19,7 @@ const memberQuery = createQuery({
     cmlimit: '500',
 });
 
-const getMembers = async () => {
+async function getMembers() {
     const response = await fetch(memberQuery);
     const data = await response.json();
 
@@ -29,14 +29,14 @@ const getMembers = async () => {
         .map(member => member.title);
 
     const retiredQuery = createQuery({
-        action: 'queryies',
+        action: 'query',
         list: 'categorymembers',
         cmtitle: 'Category:Retired',
         cmtype: 'page',
         cmlimit: '500'
     });
 
-    const categorize = async () => {
+    async function categorize() {
         const response = await fetch(retiredQuery);
         const data = await response.json();
 
@@ -85,7 +85,7 @@ document.querySelector('form').onsubmit = () => {
         page: memberValue,
     })
 
-    const getPage = async () => {
+    async function getPage() {
         const response = await fetch(pageQuery);
         const data = await response.json()
 
