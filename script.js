@@ -1,7 +1,5 @@
-const BASE_URL = 'https://virtualyoutuber.fandom.com/api.php';
-
 function createQuery(parameters) {
-    let query = BASE_URL;
+    let query = 'https://virtualyoutuber.fandom.com/api.php';
     query += '?origin=*';
     Object.keys(parameters).forEach(key => {
         query += '&' + key + '=' + parameters[key];
@@ -11,15 +9,15 @@ function createQuery(parameters) {
     return query;
 }
 
-const memberQuery = createQuery({
-    action: 'query',
-    list: 'categorymembers',
-    cmtitle: 'Category:Hololive',
-    cmtype: 'page',
-    cmlimit: '500',
-});
-
 async function getMembers() {
+    const memberQuery = createQuery({
+        action: 'query',
+        list: 'categorymembers',
+        cmtitle: 'Category:Hololive',
+        cmtype: 'page',
+        cmlimit: '500',
+    });
+    
     const response = await fetch(memberQuery);
     const data = await response.json();
 
