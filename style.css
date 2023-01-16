@@ -47,7 +47,7 @@ select {
     border: none;
     border-radius: 8px;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     padding: 16px 20px;
     font-size: 14px;
     font-weight: bold;
@@ -87,6 +87,7 @@ section {
     padding: 2em;
     margin: 2em;
     font-weight: 500;
+    width: fit-content;
 }
 
 @keyframes show {
