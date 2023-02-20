@@ -1,3 +1,11 @@
+:root {
+    --bg-color: #F0F0F4;
+    --content-color: #FFF;
+    --hover-color: #F6F6F8;
+    --link-color: #003EAA;
+    --text-color: #15141A;
+}
+
 @font-face {
     font-family: 'Chicago';
     src: url(fonts/ChicagoFLF.ttf) format('truetype');
@@ -13,14 +21,14 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: #F0F0F4;
-    color: #15141A;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #FFF;
+    background-color: var(--content-color);
     font-size: 1.5em;
     font-weight: bold;
     padding: 6px 0;
@@ -36,7 +44,7 @@ h2 {
 }
 
 a {
-    color: #003EAA;
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -45,7 +53,7 @@ a:hover {
 }
 
 a:visited {
-    color: #003EAA;
+    color: var(--link-color);
 }
 
 select {
@@ -57,12 +65,12 @@ select {
     padding: 16px 20px;
     font-size: 14px;
     font-weight: bold;
-    background-color: #F0F0F4;
-    color: #15141A;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 select:hover {
-    background-color: #F6F6F8;
+    background-color: var(--hover-color);
 }
 
 input {
@@ -73,12 +81,12 @@ input {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    background-color: #F0F0F4;
-    color: #15141A;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 input:active {
-    background-color: #F6F6F8;
+    background-color: var(--hover-color);
 }
 
 section {
@@ -88,7 +96,7 @@ section {
 }
 
 .content {
-    background-color: #FFF;
+    background-color: var(--content-color);
     border-radius: 8px;
     box-sizing: border-box;
     padding: 2em;
