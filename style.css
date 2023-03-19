@@ -124,7 +124,7 @@ section {
     }
 }
 
-@media only screen and (min-width: 415px) {
+@media only screen and (min-width: 429px) {
     select {
         display: inline;
         border-radius: 8px 0 0 8px;
