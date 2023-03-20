@@ -45,7 +45,7 @@ footer {
 }
 
 img {
-    height: 2rem;
+    height: 3rem;
 }
 
 h1, h2 {
@@ -121,7 +121,7 @@ section {
     to {opacity: 1;}
 }
 
-@media only screen and (min-width: 429px) {
+@media only screen and (min-width: 428px) {
     select {
         display: inline;
         border-radius: 0.5rem 0 0 0.5rem;
