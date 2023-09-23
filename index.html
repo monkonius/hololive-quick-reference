@@ -6,30 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fandom wiki interface for hololive staff and member pages.">
     <title>hololive Quick Reference: Easy access to your favorite members!</title>
-    <script src="script.js" async></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <script type="module" src="./src/main.jsx"></script>
+    <link rel="icon" href="./src/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <a href="https://en.hololive.tv/" target="_blank" rel="external">
-            <img src="./images/Hololive Production logo.svg" alt="Hololive Production logo">
-        </a>
-    </header>
-    <main class="content">
-        <form>
-            <h1>Quick Reference</h1>
-            <select name="members" id="members" required>
-                <option disabled selected value="">Choose a member</option>
-            </select><!--
-            --><input type="submit" value="Submit">
-        </form>
-        <div id="result"></div>
-    </main>
-    <footer>
-        <span>
-            Source: <a href="https://virtualyoutuber.fandom.com/wiki/Virtual_YouTuber_Wiki" target="_blank" rel="external">Virtual YouTuber Fandom Wiki</a>
-        </span>
-    </footer>
+    <div id="root"></div>
 </body>
 </html>
