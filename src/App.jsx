@@ -52,6 +52,53 @@ function App() {
     getMembers();
   }, [])
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    let member = e.target[0].value;
+    member = member.replace(/\+ /, '%2B_');
+
+    const pageQuery = createQuery({
+      action: 'parse',
+      page: member,
+    });
+
+    async function getPage() {
+      const response = await fetch(pageQuery);
+      const data = await response.json()
+
+      const parser = new DOMParser();
+      const page = parser.parseFromString(data.parse.text['*'], 'text/html');
+
+      const infoboxElements = page.querySelectorAll('.portable-infobox *');
+      const infobox = page.querySelector('.portable-infobox');
+
+      const REMOVE = ['FIGURE', 'SUP', 'UL'];
+
+      for (let element of infoboxElements) {
+        if (REMOVE.includes(element.tagName) || element.dataset.source === 'title1') {
+          element.remove();
+          // Replace hyperlinks with relative paths from source
+        } else if (element.tagName === 'A' && element.title) {
+          const span = document.createElement('span');
+          span.innerHTML = element.innerHTML;
+          element.replaceWith(span);
+        } else if (element.tagName === 'A') {
+          continue;
+        }
+
+        // Unneeded attributes from source
+        while (element.attributes.length > 0) {
+          element.removeAttribute(element.attributes[0].name);
+        }
+      }
+
+      document.getElementById('result').innerHTML = infobox.innerHTML;
+    }
+
+    getPage();
+  }
+
   return (
     <>
       <header>
@@ -60,7 +107,7 @@ function App() {
         </a>
       </header>
       <main className="content">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Quick Reference</h1>
           <select defaultValue={"choose"} name="members" id="members" required>
             <option disabled value="choose">Choose a member</option>
